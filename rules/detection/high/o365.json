@@ -87,8 +87,9 @@
   }
   {
     "title": "Suspicious Outlook Office Authentication  Interupt (CMSI)",
-    "expression": "event.action == 'UserLoginFailed' && o365.audit.LogonError == 'CmsiInterrupt'",
+    "expression": "(event.action == 'UserLoginFailed' && o365.audit.LogonError == 'CmsiInterrupt') || (event.action == 'UserLoggedIn' && o365.audit.ExtendedProperties.RequestType == 'Cmsi:Cmsi')",
     "severity": "high",
-    "type": "o365"
+    "type": "o365",
+    "reference": "https://outline.cybersift.io/doc/the-silent-guardian-understanding-cmsi-interrupts-in-office-365-wY1k1kBDxS"
   }
 ]
